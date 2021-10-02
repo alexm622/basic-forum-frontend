@@ -1,11 +1,11 @@
 <div class="form-group">
-  <h1>Hero Form</h1>
+  <h1>Login</h1>
   <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
     <div class="form-group">
-      <label for="username">Name</label>
+      <label for="username">Username</label>
       <input type="text" class="form-control" id="username"
              required
-             [(ngModel)]="credentials.username" name="username"
+             [(ngModel)]="credentials.uname" name="username"
              #name="ngModel">
       <div [hidden]="name.valid || name.pristine"
            class="alert alert-danger">
@@ -14,10 +14,10 @@
     </div>
 
     <div class="form-group">
-      <label for="password">Alter Ego</label>
+      <label for="password">Password</label>
       <input type="text" class="form-control" id="password"
              required
-             [(ngModel)]="credentials.password" name="password"
+             [(ngModel)]="credentials.pw" name="password"
               #password="ngModel">
     </div>
     <div [hidden]="password.valid || password.pristine"
@@ -29,18 +29,23 @@
 
   </form>
 </div>
-
+<div>
+  <div class="col-xs-3">Get Data</div>
+  <button (click)="">get request</button>
+  <div class="col-xs-9">{{}}</div>
+</div>
 <div [hidden]="!submitted">
   <h2>You submitted the following:</h2>
   <div class="row">
     <div class="col-xs-3">Username</div>
-    <div class="col-xs-9">{{ credentials.username }}</div>
+    <div class="col-xs-9">{{ credentials.uname }}</div>
   </div>
   <div class="row">
     <div class="col-xs-3">Password</div>
-    <div class="col-xs-9">{{ credentials.password }}</div>
+    <div class="col-xs-9">{{ credentials.pw }}</div>
   </div>
   <br>
   <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+
 </div>
 
