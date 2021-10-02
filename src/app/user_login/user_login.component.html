@@ -31,8 +31,8 @@
 </div>
 <div>
   <div class="col-xs-3">Get Data</div>
-  <button (click)="">get request</button>
-  <div class="col-xs-9">{{}}</div>
+  <button (click)="makeRequest()">get request</button>
+  <div class="col-xs-9">{{login_resp.outcome}}</div>
 </div>
 <div [hidden]="!submitted">
   <h2>You submitted the following:</h2>

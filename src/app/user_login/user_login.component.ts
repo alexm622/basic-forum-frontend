@@ -16,7 +16,7 @@ import {LoginResponse} from "../api/Response";
 export class User_loginComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-  server_url:string = "http://127.0.0.1:8080/health"
+  server_url:string = "http://localhost:4200/login"
 
   ngOnInit(): void {
   }
@@ -26,12 +26,18 @@ export class User_loginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
   };
+
   post_req:Post<LoginRequest,LoginResponse> = new Post<LoginRequest,LoginResponse>(this.server_url,this.credentials,this.http);
   makeRequest(){
      this.post_req = new Post<LoginRequest,LoginResponse>(this.server_url,this.credentials,this.http);
-     //this.post_req.make_request().subscribe(this.login_resp => .push(this.credentials));
-    
+     return this.post_req.make_request().subscribe((data: LoginResponse) => this.login_resp = {
+       login_token: data.login_token,
+       uid: data.uid,
+       outcome: data.outcome
+     });
+
   }
+
 
 
 }
