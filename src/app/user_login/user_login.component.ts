@@ -28,16 +28,24 @@ export class User_loginComponent implements OnInit {
   };
 
   post_req:Post<LoginRequest,LoginResponse> = new Post<LoginRequest,LoginResponse>(this.server_url,this.credentials,this.http);
-  makeRequest(){
+  async makeRequest(){
      this.post_req = new Post<LoginRequest,LoginResponse>(this.server_url,this.credentials,this.http);
-     return this.post_req.make_request().subscribe((data: LoginResponse) => this.login_resp = {
-       login_token: data.login_token,
-       uid: data.uid,
-       outcome: data.outcome
-     });
 
+
+    const t = await this.post_req.make_request().toPromise();
+    this.login_resp.login_token = t.login_token;
+    this.login_resp.uid = t.uid;
+    this.login_resp.outcome = t.outcome;
+    console.log("token: " + this.login_resp.login_token);
+    localStorage.setItem("token", this.login_resp.login_token ?? "none");
+    localStorage.setItem("uid", this.login_resp.uid?.toString() ?? "0");
   }
-
+  token:string ="";
+  id:number = 0;
+  getStoredData(){
+    this.token = localStorage.getItem("token") ?? "none";
+    this.id  = Number.parseInt(localStorage.getItem("uid") ?? "0");
+  }
 
 
 }

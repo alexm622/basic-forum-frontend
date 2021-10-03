@@ -34,6 +34,12 @@
   <button (click)="makeRequest()">get request</button>
   <div class="col-xs-9">{{login_resp.outcome}}</div>
 </div>
+<div>
+  <div class="col-xs-3">Check Local Storage</div>
+  <button (click)="getStoredData()">Check Stored</button>
+  <div class="col-xs-9">{{token}}</div>
+  <div class="col-xs-9">{{id}}</div>
+</div><br>
 <div [hidden]="!submitted">
   <h2>You submitted the following:</h2>
   <div class="row">
@@ -46,6 +52,5 @@
   </div>
   <br>
   <button class="btn btn-primary" (click)="submitted=false">Edit</button>
-
 </div>
 
