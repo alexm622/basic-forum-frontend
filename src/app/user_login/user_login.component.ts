@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import {NONE_TYPE} from "@angular/compiler";
 
-import {config, Observable} from "rxjs";
-import {catchError, retry} from "rxjs/operators";
 
 import {LoginRequest, Post} from "../api/Requests";
+import {Login} from "../api/Login";
 import {LoginResponse} from "../api/Response";
 
 @Component({
@@ -16,30 +14,27 @@ import {LoginResponse} from "../api/Response";
 export class User_loginComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
-  server_url:string = "http://localhost:4200/login"
+
 
   ngOnInit(): void {
   }
   submitted:boolean = false;
+  outcome:boolean = false;
   credentials:LoginRequest = new LoginRequest("", "");
-  login_resp:LoginResponse = new LoginResponse(false);
   onSubmit() {
     this.submitted = true;
   };
-
-  post_req:Post<LoginRequest,LoginResponse> = new Post<LoginRequest,LoginResponse>(this.server_url,this.credentials,this.http);
-  async makeRequest(){
-     this.post_req = new Post<LoginRequest,LoginResponse>(this.server_url,this.credentials,this.http);
-
-
-    const t = await this.post_req.make_request().toPromise();
-    this.login_resp.login_token = t.login_token;
-    this.login_resp.uid = t.uid;
-    this.login_resp.outcome = t.outcome;
-    console.log("token: " + this.login_resp.login_token);
-    localStorage.setItem("token", this.login_resp.login_token ?? "none");
-    localStorage.setItem("uid", this.login_resp.uid?.toString() ?? "0");
+  async login(){
+    let login:Login = new Login(this.http);
+    let resp:LoginResponse = (await login.makeRequest(this.credentials));
+    localStorage.setItem("token", resp.login_token ?? "none");
+    localStorage.setItem("uid", resp.uid?.toString() ?? "0");
+    this.outcome = resp.outcome;
   }
+
+
+
+
   token:string ="";
   id:number = 0;
   getStoredData(){
