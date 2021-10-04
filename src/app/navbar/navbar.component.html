@@ -29,7 +29,7 @@
     </div>
   </div>
   <app-login (loginEvent)="loginEvent($event)" [hidden]="loggedIn"></app-login>
-  <div [hidden]="!loggedIn" style="width: 20px"></div>
+  <div [hidden]="!loggedIn"                       style="width: 20px"></div>
   <div [hidden]="!loggedIn" style="width:100px;">
     <app-logged-in  [login_events]="this.eventSubject.asObservable()" ></app-logged-in>
   </div>

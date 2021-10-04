@@ -12,6 +12,10 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoggedInComponent } from './logged-in/logged-in.component';
+import { PostComponent } from './post/post.component';
+import { CommentComponent } from './comment/comment.component';
+import { CategoryComponent } from './category/category.component';
+import { FrontpageComponent } from './frontpage/frontpage.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { LoggedInComponent } from './logged-in/logged-in.component';
     LoginComponent,
     LoginDialog,
     NavbarComponent,
-    LoggedInComponent
+    LoggedInComponent,
+    PostComponent,
+    CommentComponent,
+    CategoryComponent,
+    FrontpageComponent
   ],
   imports: [
     BrowserModule,
