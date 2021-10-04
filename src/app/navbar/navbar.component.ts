@@ -12,6 +12,15 @@ export class NavbarComponent implements OnInit {
   loggedIn:boolean = false;
 
   ngOnInit(): void {
+    this.loggedIn = this.loggedInCheck()
+  }
+
+  loggedInCheck(): boolean{
+    let uname:string = localStorage.getItem("uname") ?? "none";
+    if(uname == "none"){
+      return false;
+    }
+    return true;
   }
 
   loginEvent(childEvent:boolean){

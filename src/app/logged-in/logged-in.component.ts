@@ -12,6 +12,7 @@ export class LoggedInComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.username = localStorage.getItem("uname") ?? "not logged in";
     this.eventsSubscription = this.login_events?.subscribe(() => this.loginEvent()) ?? undefined;
   }
   username:string = "not logged in";
