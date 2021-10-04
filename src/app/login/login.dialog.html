@@ -1,5 +1,8 @@
-<h1 mat-dialog-title>Hi {{data.uname}}</h1>
-<div mat-dialog-content>
+
+<div class="modal-header">
+  <h1 mat-dialog-title class="modal-title align-items-center">Login</h1>
+</div>
+<div mat-dialog-content class="modal-body">
   <p>Username</p>
   <mat-form-field appearance="fill">
     <mat-label>Username</mat-label>
@@ -11,8 +14,9 @@
     <input matInput name="pw" [(ngModel)]="data.pw">
   </mat-form-field>
 </div>
-<div mat-dialog-actions>
-  <button mat-button  class="btn btn-secondary" (click)="onNoClick()">Back</button>
-  <button mat-button  class="btn btn-primary"  [mat-dialog-close]="data"  cdkFocusInitial>Ok</button>
+<div mat-dialog-actions class="align-content-center">
+  <button mat-button  type="button" class="btn btn-secondary" (click)="onNoClick()">Close</button>
+  <button mat-button  class="btn btn-primary"  data-bs-dismiss="modal" [mat-dialog-close]="data"  cdkFocusInitial>Ok</button>
 </div>
+
 
