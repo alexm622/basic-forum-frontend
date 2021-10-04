@@ -28,7 +28,10 @@
       </form>
     </div>
   </div>
-  <app-login (loginEvent)="loggedIn = $event.valueOf()" [hidden]="loggedIn"></app-login>
-  <!-- some sort of user information here -->
+  <app-login (loginEvent)="loginEvent($event)" [hidden]="loggedIn"></app-login>
+  <div [hidden]="!loggedIn" style="width: 20px"></div>
+  <div [hidden]="!loggedIn" style="width:100px;">
+    <app-logged-in  [login_events]="this.eventSubject.asObservable()" ></app-logged-in>
+  </div>
   <div style="width:20px;"></div>
 </nav>

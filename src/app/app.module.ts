@@ -11,13 +11,15 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import { NavbarComponent } from './navbar/navbar.component';
+import { LoggedInComponent } from './logged-in/logged-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LoginDialog,
-    NavbarComponent
+    NavbarComponent,
+    LoggedInComponent
   ],
   imports: [
     BrowserModule,

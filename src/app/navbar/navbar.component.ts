@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-navbar',
@@ -6,11 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  eventSubject: Subject<void> = new Subject<void>();
   constructor() { }
   loggedIn:boolean = false;
 
   ngOnInit(): void {
+  }
+
+  loginEvent(childEvent:boolean){
+    this.loggedIn = childEvent;
+    this.eventSubject.next();
   }
 
 }
