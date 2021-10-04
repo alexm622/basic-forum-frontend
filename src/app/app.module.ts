@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from "@angular/forms";
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {LoginComponent, LoginDialog} from './login/login.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
+import {LoginComponent, LoginDialog} from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoggedInComponent } from './logged-in/logged-in.component';
 import { PostComponent } from './post/post.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { CommentComponent } from './comment/comment.component';
 import { CategoryComponent } from './category/category.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { LoginPageComponent } from './login-page/login-page.component';
     CommentComponent,
     CategoryComponent,
     FrontpageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    HomeComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     MatButtonModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppRoutingModule, AppComponent]
 })
 export class AppModule {
 
