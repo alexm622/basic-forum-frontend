@@ -47,7 +47,7 @@ import { RegisterComponent } from './register/register.component';
     MatButtonModule
   ],
   providers: [],
-  bootstrap: [AppRoutingModule, AppComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 
