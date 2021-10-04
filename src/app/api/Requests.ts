@@ -7,9 +7,9 @@ const httpOptions = {
     Authorization: 'auth'
   })
 };
-export class LoginRequest {
-  constructor(public uname:string, public pw:string) {
-  }
+export interface LoginRequest{
+  uname: string;
+  pw: string;
 }
 
 export class Post<Type1, Type2>{
