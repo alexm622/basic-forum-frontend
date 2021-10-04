@@ -16,6 +16,7 @@ import { PostComponent } from './post/post.component';
 import { CommentComponent } from './comment/comment.component';
 import { CategoryComponent } from './category/category.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FrontpageComponent } from './frontpage/frontpage.component';
     PostComponent,
     CommentComponent,
     CategoryComponent,
-    FrontpageComponent
+    FrontpageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
