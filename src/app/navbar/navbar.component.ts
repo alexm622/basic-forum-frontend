@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   }
 
   loggedInCheck(): boolean{
-    let uname:string = localStorage.getItem("uname") ?? "none";
+    let uname:string = (localStorage.getItem("uname") ?? "none");
     if(uname == "none"){
       return false;
     }

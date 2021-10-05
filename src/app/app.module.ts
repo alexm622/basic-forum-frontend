@@ -19,6 +19,8 @@ import { FrontpageComponent } from './frontpage/frontpage.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { PostsComponent } from './posts/posts.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { RegisterComponent } from './register/register.component';
     LoginPageComponent,
     HomeComponent,
     RegisterComponent,
+    CategoriesComponent,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,
