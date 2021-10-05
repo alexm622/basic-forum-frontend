@@ -29,12 +29,15 @@ export class LoginComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log("dialog closed");
-      this.credentials.uname = result.uname;
-      this.credentials.pw = result.pw;
+      this.credentials.uname = result?.uname ?? "none";
+      this.credentials.pw = result?.pw ?? "none";
+      if(this.credentials.uname == "none"){
+        return;
+      }
       let login:Login = new Login(this.http)
       login.login(this.credentials).then(r => {
         console.log("login response recieved");
-        if(localStorage.getItem("token") != "none"){
+        if(!(localStorage.getItem("token") == "none")){
           localStorage.setItem("uname", this.credentials.uname);
           this.loginEvent.emit(true);
         }else{
