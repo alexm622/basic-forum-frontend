@@ -5,7 +5,7 @@ import {Get, LoginRequest, Post, SignupRequest} from "./Requests";
 export class Signup {
   constructor(public http:HttpClient) {
   }
-  private signup_url:string = "http://10.16.40.203:8080/signup";
+  private signup_url:string = "http://10.16.40.203:8080/newuser";
   private username_check:string = "http://10.16.40.203:8080/checkuname";
   private email_check:string = "http://10.16.40.203:8080/checkemail";
 

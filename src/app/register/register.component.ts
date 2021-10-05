@@ -3,6 +3,7 @@ import {FormControl, FormGroup, NgModel, Validators} from "@angular/forms";
 import {Signup} from "../api/Signup";
 import {HttpClient} from "@angular/common/http";
 import {SignupRequest} from "../api/Requests";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,7 @@ export class RegisterComponent implements OnInit {
   private pw:string = "";
   private uname:string = "";
   public s:Signup;
-    constructor( public http:HttpClient) {
+    constructor( public http:HttpClient, private router: Router) {
       this.s = new Signup(this.http);
     }
 
@@ -35,15 +36,20 @@ export class RegisterComponent implements OnInit {
       pw: this.pw,
       email: this.email_address
     };
-    let token:string = "";
+
     let uid:number = 0;
     this.s.signup(credentials).then(r =>{
-      token = r.token ?? "none";
-      uid = r.uid ?? 0;
+      localStorage.setItem("token", r.token ?? "none");
+      localStorage.setItem("uid", (r.uid?.toString() ?? "0"));
+      localStorage.setItem("uname", r.outcome? this.uname : "none");
+      if(r.outcome){
+        this.router.navigate(['']).finally();
+      }
     })
-    localStorage.setItem("token", token);
-    localStorage.setItem("uid", uid.toString());
+
+
   }
+
 
   password1_update(password1:string, password2:string){
     if(!this.pass1_used){
@@ -72,8 +78,8 @@ export class RegisterComponent implements OnInit {
       this.pass1_valid = false;
     }
     //if the passwords do not match
-    if(password1 != password2){
-      this.pass2_valid = false;
+    if(password1 == password2){
+      this.pass2_valid = true;
     }
     if(this.pass1_valid && this.pass2_valid){
       this.pw = password1;
