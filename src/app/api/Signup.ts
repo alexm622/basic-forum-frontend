@@ -1,6 +1,6 @@
 import {HttpClient} from "@angular/common/http";
-import {Exists, LoginResponse, SignupResponse} from "./Response";
-import {Get, LoginRequest, Post, SignupRequest} from "./Requests";
+import {Exists, SignupResponse} from "./Response";
+import {Get, Post, SignupRequest} from "./Requests";
 
 export class Signup {
   constructor(public http:HttpClient) {

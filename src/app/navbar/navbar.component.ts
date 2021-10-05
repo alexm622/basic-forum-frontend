@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Subject} from "rxjs";
 
 @Component({
@@ -17,10 +17,8 @@ export class NavbarComponent implements OnInit {
 
   loggedInCheck(): boolean{
     let uname:string = (localStorage.getItem("uname") ?? "none");
-    if(uname == "none"){
-      return false;
-    }
-    return true;
+    return uname != "none";
+
   }
 
   loginEvent(childEvent:boolean){

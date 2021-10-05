@@ -18,21 +18,15 @@ export interface SignupRequest{
   email: string;
 }
 
-export interface UsernameExists{
-  uname: string;
-}
-export interface EmailExists{
-  email: string;
-}
 export class Post<Type1, Type2>{
   constructor(public url:string, public data:Type1, public http:HttpClient) {
   }
 
   public make_request(): Observable<Type2>{
-    return this.http.post<Type2>(this.url, this.data, httpOptions).pipe(catchError(this.handleError));
+    return this.http.post<Type2>(this.url, this.data, httpOptions).pipe(catchError(Post.handleError));
   }
 
-  private handleError(error: HttpErrorResponse) {
+  private static handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error);

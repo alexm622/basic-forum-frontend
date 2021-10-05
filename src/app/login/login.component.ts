@@ -3,7 +3,6 @@ import {MAT_DIALOG_DATA, MatDialogRef, MatDialog} from "@angular/material/dialog
 import {LoginRequest} from "../api/Requests";
 import {Login} from "../api/Login";
 import {HttpClient} from "@angular/common/http";
-import {LoginResponse} from "../api/Response";
 
 
 
@@ -40,6 +39,8 @@ export class LoginComponent implements OnInit {
         console.log("login response received");
         if(!(localStorage.getItem("token") == "none")){
           localStorage.setItem("uname", this.credentials.uname);
+          localStorage.setItem("token", r.login_token ?? "none");
+          localStorage.setItem("uid", r.uid?.toString() ?? "0");
           this.loginEvent.emit(true);
         }else{
           this.loginEvent.emit(false);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, NgModel, Validators} from "@angular/forms";
+import {NgModel} from "@angular/forms";
 import {Signup} from "../api/Signup";
 import {HttpClient} from "@angular/common/http";
 import {SignupRequest} from "../api/Requests";
@@ -37,7 +37,6 @@ export class RegisterComponent implements OnInit {
       email: this.email_address
     };
 
-    let uid:number = 0;
     this.s.signup(credentials).then(r =>{
       localStorage.setItem("token", r.token ?? "none");
       localStorage.setItem("uid", (r.uid?.toString() ?? "0"));
@@ -67,12 +66,10 @@ export class RegisterComponent implements OnInit {
   }
 
   password_test(password1:string, password2:string){
-    this.pass1_valid = true;
-    if(password1.length < 8){
-      this.pass1_valid = false;
-    }
+
+    this.pass1_valid = password1.length >= 8;
     //calculate the complexity
-    let complexity:number = this.measureStrength(password1);
+    let complexity:number = RegisterComponent.measureStrength(password1);
     //complexity must have a score of 4
     if(complexity != 4 && this.pass1_valid){
       this.pass1_valid = false;
@@ -86,7 +83,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  private measureStrength(pass: string):number{
+  private static measureStrength(pass: string):number{
     let digits:boolean = /\d/.test(pass);
     let lower:boolean =  /[a-z]/.test(pass);
     let upper:boolean = /[A-Z]/.test(pass);
