@@ -12,6 +12,16 @@ export interface LoginRequest{
   pw: string;
 }
 
+export interface SignupRequest{
+  uname: string;
+  pw: string;
+  email: string;
+}
+
+export interface UsernameExists{
+  uname: string;
+}
+
 export class Post<Type1, Type2>{
   constructor(public url:string, public data:Type1, public http:HttpClient) {
   }
