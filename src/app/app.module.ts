@@ -21,6 +21,8 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { PostsComponent } from './posts/posts.component';
+import { CategoryItemComponent } from './category-item/category-item.component';
+import { PostItemComponent } from './post-item/post-item.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { PostsComponent } from './posts/posts.component';
     RegisterComponent,
     CategoriesComponent,
     PostsComponent,
+    CategoryItemComponent,
+    PostItemComponent,
   ],
   imports: [
     BrowserModule,

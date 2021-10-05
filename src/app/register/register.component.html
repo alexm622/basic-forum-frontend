@@ -8,7 +8,7 @@
           <div>
             <label for="email" class="form-label mt-4">Email address</label>
             <input name="email" id="email" type="email" #email_reference="ngModel" class="form-control"
-                   aria-describedby="emai lHelp" placeholder="Enter email"
+                   aria-describedby="email Help" placeholder="Enter email"
                    required pattern="^(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_`{|}~-]+)*|(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
                    [class.is-invalid]="email_reference.invalid"
                    [class.is-valid]="email_reference.valid"
@@ -18,7 +18,7 @@
           </div>
           <div>
             <label class="form-label mt-4" for="username">Username</label>
-            <input name="username" type="text"  placeholder="username"class="form-control" id="username" [class.is-invalid]="!username_valid && username_used" [class.is-valid]="username_valid && username_used" (input)="username_changed(username.value)" #username>
+            <input name="username" type="text"  placeholder="username" class="form-control" id="username" [class.is-invalid]="!username_valid && username_used" [class.is-valid]="username_valid && username_used" (input)="username_changed(username.value)" #username>
             <div class="valid-feedback">This Username is available.</div>
             <div class="invalid-feedback">This Username is taken</div>
           </div>
