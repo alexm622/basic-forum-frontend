@@ -1,4 +1,15 @@
-export class LoginResponse {
-  constructor(public outcome:boolean, public login_token?:string, public uid?:number) {
-  }
+export interface LoginResponse{
+  outcome:boolean;
+  login_token?:string;
+  uid?:number;
+}
+export interface Exists{
+  exists:boolean;
+}
+
+export interface SignupResponse{
+  response_code:number,
+  outcome:boolean,
+  uid?: number,
+  token?: string,
 }

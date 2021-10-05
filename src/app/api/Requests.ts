@@ -21,7 +21,9 @@ export interface SignupRequest{
 export interface UsernameExists{
   uname: string;
 }
-
+export interface EmailExists{
+  email: string;
+}
 export class Post<Type1, Type2>{
   constructor(public url:string, public data:Type1, public http:HttpClient) {
   }
@@ -43,5 +45,12 @@ export class Post<Type1, Type2>{
     // Return an observable with a user-facing error message.
     return throwError(
       'Something bad happened; please try again later.');
+  }
+}
+export class Get<Type2>{
+  constructor(public url:string, public args_string:string, public http:HttpClient) {
+  }
+  public make_request(): Observable<Type2>{
+    return this.http.get<Type2>(this.url + this.args_string).pipe();
   }
 }

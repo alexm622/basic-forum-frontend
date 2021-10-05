@@ -1,26 +1,29 @@
 import {HttpClient} from "@angular/common/http";
-import {LoginResponse} from "./Response";
-import {LoginRequest, Post} from "./Requests";
+import {Exists, LoginResponse, SignupResponse} from "./Response";
+import {Get, LoginRequest, Post, SignupRequest} from "./Requests";
 
 export class Signup {
   constructor(public http:HttpClient) {
   }
-  private server_url:string = "http://10.16.40.203:8080/signup";
-  public login_resp:LoginResponse = new LoginResponse(false);
-  private post_req:Post<LoginRequest,LoginResponse> = new Post<LoginRequest,LoginResponse>(this.server_url, {uname:"", pw:""},this.http);
+  private signup_url:string = "http://10.16.40.203:8080/signup";
+  private username_check:string = "http://10.16.40.203:8080/checkuname";
+  private email_check:string = "http://10.16.40.203:8080/checkemail";
 
-  public async login(credentials:LoginRequest):Promise<LoginResponse>{
-    this.post_req = new Post<LoginRequest,LoginResponse>(this.server_url,credentials,this.http);
 
-    const t = await this.post_req.make_request().toPromise();
-    this.login_resp.login_token = t.login_token;
-    this.login_resp.uid = t.uid;
-    this.login_resp.outcome = t.outcome;
-    console.log("token: " + this.login_resp.login_token);
-    localStorage.setItem("token", this.login_resp.login_token ?? "none");
-    localStorage.setItem("uid", this.login_resp.uid?.toString() ?? "0");
-    return t;
+  public async signup(credentials:SignupRequest):Promise<SignupResponse>{
+    let post_req:Post<SignupRequest,SignupResponse> = new Post<SignupRequest,SignupResponse>(this.signup_url,credentials,this.http);
+    return await post_req.make_request().toPromise();
+  }
 
+  public async check_uname(uname:string){
+    let args:string = "&uname=" + uname;
+    let get_req:Get<Exists> = new Get<Exists>(this.username_check, args, this.http)
+    return await get_req.make_request().toPromise();
+  }
+  public async check_email(email:string){
+    let args:string = "&email=" + email;
+    let get_req:Get<Exists> = new Get<Exists>(this.email_check, args, this.http)
+    return await get_req.make_request().toPromise();
   }
 
   public static logout(){
