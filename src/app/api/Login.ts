@@ -8,6 +8,9 @@ export class Login {
   private server_url:string = "http://10.16.40.203:8080/login";
 
   public async login(credentials:LoginRequest):Promise<LoginResponse>{
+    if(((credentials.pw ?? "none") == "none" )|| ((credentials.uname ?? "none") == "none")){
+      return {login_token:"none", uid:0, outcome:false};
+    }
     let post_req:Post<LoginRequest,LoginResponse>= new Post<LoginRequest,LoginResponse>(this.server_url,credentials,this.http);
 
     const t = await post_req.make_request().toPromise();

@@ -16,12 +16,14 @@ export class Signup {
   }
 
   public async check_uname(uname:string){
-    let args:string = "&uname=" + uname;
+
+    let args:string = "&uname=" + ((uname.replace(" ","") == "")? "none" : uname);
     let get_req:Get<Exists> = new Get<Exists>(this.username_check, args, this.http)
     return await get_req.make_request().toPromise();
   }
   public async check_email(email:string){
-    let args:string = "&email=" + email;
+
+    let args:string = "&email=" + ((email.replace(" ","") == "")? "none" : email);
     let get_req:Get<Exists> = new Get<Exists>(this.email_check, args, this.http)
     return await get_req.make_request().toPromise();
   }
