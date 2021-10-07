@@ -13,7 +13,7 @@ export interface Post{
 }
 
 
-export interface Comment{
+export interface UserComment {
   comment_id:number;
   content:string;
   creator_id:number;
