@@ -63,6 +63,7 @@ export class PostsComponent implements OnInit {
     this.componentRef.instance.post_id = post.post_id;
     this.componentRef.instance.post_content = post.content;
     this.componentRef.instance.post_name = post.name;
+    this.componentRef.instance.cat_id = this.cat_id;
   }
 
 }
