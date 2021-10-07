@@ -23,6 +23,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { PostsComponent } from './posts/posts.component';
 import { CategoryItemComponent } from './category-item/category-item.component';
 import { PostItemComponent } from './post-item/post-item.component';
+import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { PostItemComponent } from './post-item/post-item.component';
     PostsComponent,
     CategoryItemComponent,
     PostItemComponent,
+    PagesComponent,
   ],
   imports: [
     BrowserModule,

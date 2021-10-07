@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, ComponentFactoryResolver, ComponentRef, ViewChild, ViewContainerRef} from '@angular/core';
+import {CategoryItemComponent} from "./category-item/category-item.component";
 
 
 

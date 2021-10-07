@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-category-item',
@@ -8,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class CategoryItemComponent implements OnInit {
 
   constructor() { }
+
+  @Input() cat_id:number = 0;
+  @Input() cat_desc:string = "description";
+  @Input() cat_name:string = "Category Name";
 
   ngOnInit(): void {
   }
