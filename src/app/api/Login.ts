@@ -25,5 +25,11 @@ export class Login {
     localStorage.removeItem("token");
     localStorage.removeItem("uid");
   }
+
+  public static loggedInCheck(): boolean{
+    let uname:string = (localStorage.getItem("uname") ?? "none");
+    return uname != "none";
+
+  }
 }
 

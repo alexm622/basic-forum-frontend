@@ -24,6 +24,8 @@ import { PostsComponent } from './posts/posts.component';
 import { CategoryItemComponent } from './category-item/category-item.component';
 import { PostItemComponent } from './post-item/post-item.component';
 import { PagesComponent } from './pages/pages.component';
+import {AngularEditorModule} from "@kolkov/angular-editor";
+
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { PagesComponent } from './pages/pages.component';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    AngularEditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

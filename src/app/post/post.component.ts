@@ -5,6 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {Post, UserComment} from "../api/Objects";
 import {PostItemComponent} from "../post-item/post-item.component";
 import {CommentComponent} from "../comment/comment.component";
+import {Login} from "../api/Login";
 
 @Component({
   selector: 'app-post',
@@ -19,6 +20,7 @@ export class PostComponent implements OnInit {
   public uid:number = 0;
   public cat_id:number = 1;
   public comment_offset:number = 0;
+
 
   constructor(private route: ActivatedRoute, private router: Router,private resolver: ComponentFactoryResolver, private http:HttpClient) {}
 
@@ -93,4 +95,7 @@ export class PostComponent implements OnInit {
     this.componentRef.instance.creation_date = comment.creation_date;
   }
 
+  loggedInCheck() {
+    return Login.loggedInCheck();
+  }
 }
