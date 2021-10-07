@@ -104,7 +104,7 @@ export class RegisterComponent implements OnInit {
     //check username
     console.log("username: " + username)
     this.s.check_uname(username).then( r =>{
-      this.username_valid = !r.exists && username.length > 6;
+      this.username_valid = !r.exists && username.length > 3;
     })
     this.uname = username;
 
