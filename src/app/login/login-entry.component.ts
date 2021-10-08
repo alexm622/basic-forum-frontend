@@ -1,32 +1,28 @@
-import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef, MatDialog} from "@angular/material/dialog";
-import {LoginRequest} from "../api/Requests";
+import {Component, EventEmitter, Inject, Output} from "@angular/core";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Login} from "../api/Login";
+import {LoginRequest} from "../api/Requests";
 import {HttpClient} from "@angular/common/http";
 
-
-
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  template: ''
 })
-export class LoginComponent implements OnInit {
-
+export class LoginEntryComponent {
   @Output() loginEvent = new EventEmitter<boolean>();
-
-  constructor(public dialog: MatDialog, public http:HttpClient) { }
-
+  constructor(public dialog: MatDialog, private router: Router,
+              private route: ActivatedRoute, public http:HttpClient) {
+    this.openDialog();
+  }
   credentials:LoginRequest = {uname:"", pw:""};
 
-  ngOnInit(): void {
-  }
   openDialog(): void{
     const dialogRef = this.dialog.open(LoginDialog, {
       width: '250px',
       data: this.credentials
     });
     dialogRef.afterClosed().subscribe(result => {
+      this.router.navigate(['../'], { relativeTo: this.route }).finally();
       console.log("dialog closed");
       if(((result?.uname ?? "none") == "none") || ((result?.pw ?? "none") == "none")){
         return;
@@ -48,10 +44,8 @@ export class LoginComponent implements OnInit {
       });
     })
   }
-
-
-
 }
+
 @Component({
   selector: 'login-dialog',
   templateUrl: 'login.dialog.html',
@@ -66,3 +60,4 @@ export class LoginDialog{
     this.dialogRef.close();
   }
 }
+

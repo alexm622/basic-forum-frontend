@@ -35,7 +35,7 @@
       </form>
     </div>
   </div>
-  <app-login (loginEvent)="loginEvent($event)" [hidden]="loggedIn"></app-login>
+  <button [hidden]="loggedIn" mat-raised-button routerLink="/login"  class="btn btn-primary">Login</button>
   <div [hidden]="!loggedIn" style="width:100px;">
     <app-logged-in  [login_events]="this.eventSubject.asObservable()" ></app-logged-in>
   </div>

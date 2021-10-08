@@ -3,8 +3,8 @@ import {Comments, Posts, SinglePost} from "../api/GetData";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Post, UserComment} from "../api/Objects";
-import {PostItemComponent} from "../post-item/post-item.component";
-import {CommentComponent} from "../comment/comment.component";
+import {PostItemComponent} from "./post-item/post-item.component";
+import {CommentComponent} from "./comment/comment.component";
 import {Login} from "../api/Login";
 
 @Component({

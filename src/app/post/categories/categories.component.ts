@@ -1,9 +1,9 @@
 import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {CategoryItemComponent} from "../category-item/category-item.component";
-import {Categories} from "../api/GetData";
+import {Categories} from "../../api/GetData";
 import {HttpClient} from "@angular/common/http";
-import {Category} from "../api/Objects";
+import {Category} from "../../api/Objects";
 
 @Component({
   selector: 'app-categories',

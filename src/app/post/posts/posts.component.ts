@@ -1,8 +1,8 @@
 import {Component, ComponentFactoryResolver, ComponentRef, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {Categories, Posts} from "../api/GetData";
-import {Category, Post} from "../api/Objects";
+import {Categories, Posts} from "../../api/GetData";
+import {Category, Post} from "../../api/Objects";
 import {CategoryItemComponent} from "../category-item/category-item.component";
 import {PostItemComponent} from "../post-item/post-item.component";
 

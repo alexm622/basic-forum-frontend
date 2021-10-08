@@ -7,8 +7,8 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import {Comments} from "../api/GetData";
-import {UserComment} from "../api/Objects";
+import {Comments} from "../../api/GetData";
+import {UserComment} from "../../api/Objects";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 

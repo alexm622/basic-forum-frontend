@@ -2,25 +2,22 @@ import { NgModule } from '@angular/core';
 import {Routes, RouterModule} from "@angular/router";
 
 
-import {LoginPageComponent} from "./login-page/login-page.component";
-import {RegisterComponent} from "./register/register.component";
 import {HomeComponent} from "./home/home.component";
-import {CategoriesComponent} from "./categories/categories.component";
-import {PostComponent} from "./post/post.component";
-import {PostsComponent} from "./posts/posts.component";
 
 const routes: Routes = [
-  { path: 'login', component: LoginPageComponent},
-  { path: 'register', component: RegisterComponent},
+
+  { path: 'register', loadChildren: () => import(/*webpackChunkName: "register-page" */ './register/register.module').then(m => m.RegisterModule)},
   { path: '', component: HomeComponent},
-  { path: 'categories/:page', component: CategoriesComponent},
-  { path: 'category/:cat_id/:page', component:PostsComponent},
-  { path: 'post/:cat_id/:post_id', component: PostComponent}
+  { path: 'login', loadChildren: () => import(/*webpackChunkName: "loginDialog" */ './login/login.module').then(m => m.LoginModule)},
+  { path: 'categories', loadChildren: () => import(/*webpackChunkName: "posts" */'./post/post.module').then(m => m.PostModule)},
+  { path: 'category',  loadChildren: () => import(/*webpackChunkName: "posts" */'./post/post.module').then(m => m.PostModule)},
+  { path: 'post', loadChildren: () => import(/*webpackChunkName: "posts" */'./post/post.module').then(m => m.PostModule)}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   declarations: [],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  bootstrap: []
 })
 export class AppRoutingModule {}
