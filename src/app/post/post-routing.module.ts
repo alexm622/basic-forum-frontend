@@ -8,9 +8,9 @@ import {PostComponent} from "./post.component";
 import {PostsComponent} from "./posts/posts.component";
 
 const routes: Routes = [
-  { path: ':page', component: CategoriesComponent},
-  { path: ':cat_id/:page', component:PostsComponent},
-  { path: ':cat_id/:post_id', component: PostComponent}
+  { path: 'c/:page', component: CategoriesComponent},
+  { path: 'c/:cat_id/:page', component:PostsComponent},
+  { path: 'p/:cat_id/:post_id', component: PostComponent}
 ];
 
 @NgModule({
