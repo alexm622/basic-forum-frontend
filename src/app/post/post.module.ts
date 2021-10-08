@@ -27,7 +27,8 @@ import {AngularEditorModule} from "@kolkov/angular-editor";
   imports: [
     CommonModule,
     PostRoutingModule,
-    AngularEditorModule
+    AngularEditorModule,
+
   ]
 })
 export class PostModule { }

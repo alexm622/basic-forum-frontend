@@ -6,6 +6,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {FormsModule} from "@angular/forms";
 import {LoginRoutingModule} from "./login-routing.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {LoginRoutingModule} from "./login-routing.module";
     MatInputModule,
     MatDialogModule,
     FormsModule,
+
 
   ]
 })
