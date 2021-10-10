@@ -4,6 +4,7 @@ import {CategoryItemComponent} from "../category-item/category-item.component";
 import {Categories} from "../../api/GetData";
 import {HttpClient} from "@angular/common/http";
 import {Category} from "../../api/Objects";
+import {Login} from "../../api/Login";
 
 @Component({
   selector: 'app-categories',
@@ -56,6 +57,9 @@ export class CategoriesComponent implements OnInit {
     this.componentRef.instance.cat_id = cat.cat_id;
     this.componentRef.instance.cat_desc = cat.cat_desc;
     this.componentRef.instance.cat_name = cat.cat_name;
+  }
+  loggedInCheck() {
+    return Login.loggedInCheck();
   }
 
 }
