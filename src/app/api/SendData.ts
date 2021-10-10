@@ -13,7 +13,7 @@ export class SendCat{
   }
   public response:BasicResponse | undefined = undefined;
 
-  private url:string = "http://10.16.40.8080/newcategory";
+  private url:string = "http://10.16.40.203:8080/newcategory";
 
   async send():Promise<BasicResponse>{
     let post:Post<NewCategory, BasicResponse> = new Post(this.url, this.newCategory, this.http);
@@ -33,7 +33,7 @@ export class SendPost{
   }
   public response:BasicResponse | undefined = undefined;
 
-  private url:string = "http://10.16.40.8080/newpost";
+  private url:string = "http://10.16.40.203:8080/newpost";
 
   async send():Promise<BasicResponse>{
     let post:Post<NewPost, BasicResponse> = new Post(this.url, this.newPost, this.http);
@@ -54,7 +54,7 @@ export class SendComment{
   }
   public response:BasicResponse | undefined = undefined;
 
-  private url:string = "http://10.16.40.8080/newcomment";
+  private url:string = "http://10.16.40.203:8080/newcomment";
 
   async send():Promise<BasicResponse>{
     let post:Post<NewComment, BasicResponse> = new Post(this.url, this.comment, this.http);

@@ -10,6 +10,7 @@ import {CategoryItemComponent} from "./category-item/category-item.component";
 import {PostItemComponent} from "./post-item/post-item.component";
 import {PagesComponent} from "../pages/pages.component";
 import {AngularEditorModule} from "@kolkov/angular-editor";
+import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -24,11 +25,12 @@ import {AngularEditorModule} from "@kolkov/angular-editor";
     PostItemComponent,
     PagesComponent,
   ],
-  imports: [
-    CommonModule,
-    PostRoutingModule,
-    AngularEditorModule,
+    imports: [
+        CommonModule,
+        PostRoutingModule,
+        AngularEditorModule,
+        MatButtonModule,
 
-  ]
+    ]
 })
 export class PostModule { }

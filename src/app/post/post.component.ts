@@ -45,6 +45,7 @@ export class PostComponent implements OnInit {
         this.post_name = post.name;
         this.post_user = post.creator_id.toString();
         this.uid = post.creator_id;
+        this.post_content = post.content;
       }
 
     })
@@ -79,20 +80,13 @@ export class PostComponent implements OnInit {
     if(this.componentRef == undefined){
       return;
     }
-    /*
-    cat_id:number = 0;
-  @Input() post_id:number = 0;
-  @Input() comment_id:number = 0;
-  @Input() username:string = "";
-  @Input() content:string = "";
-  @Input() countdown:number = 5;
-     */
     this.componentRef.instance.post_id = this.post_id;
     this.componentRef.instance.cat_id = this.cat_id;
     this.componentRef.instance.comment_id = comment.comment_id;
     this.componentRef.instance.content = comment.content;
     this.componentRef.instance.username = comment.creator_id.toString();
     this.componentRef.instance.creation_date = comment.creation_date;
+    this.componentRef.instance.parent_id = 0;
   }
 
   loggedInCheck() {

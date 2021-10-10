@@ -21,7 +21,7 @@ export class CreateCommentDialogComponent {
     this.post_id = parseInt(this.route.snapshot.paramMap.get("post_id") ?? "0");
     this.cat_id = parseInt(this.route.snapshot.paramMap.get("cat_id") ?? "0");
     this.parent = parseInt(this.route.snapshot.paramMap.get("parent_id") ?? "0");
-    if(this.parent <= 0 || this.post_id <= 0 || this.cat_id <= 0){
+    if(this.parent < 0 || this.post_id <= 0 || this.cat_id <= 0){
       this.router.navigate(['']).finally();
       return;
     }
@@ -37,12 +37,9 @@ export class CreateCommentDialogComponent {
 
   openDialog(): void{
     const dialogRef = this.dialog.open(CommentDialog, {
-      width: '250px',
       data: this.comment
     });
-    dialogRef.beforeClosed().subscribe(result => {
-      dialogRef.disableClose = true;
-      dialogRef.componentInstance.loading = true;
+    dialogRef.afterClosed().subscribe(result => {
       console.log(result?.data);
       let data:String | undefined = result?.data;
       if(data == undefined){
@@ -52,7 +49,7 @@ export class CreateCommentDialogComponent {
       let token:string | null = localStorage.getItem("token");
       let uid:number | undefined = Number.parseInt(localStorage.getItem("uid") ?? "0");
       if(uid == 0 || uname == null || token == null){
-        dialogRef.componentInstance.loading = false;
+        console.log("one of the user data pieces was not set");
         return;
       }
       let comment:NewComment = {
@@ -68,9 +65,10 @@ export class CreateCommentDialogComponent {
       let resp:BasicResponse | undefined;
       send.send().then( r =>{
         resp = r;
+        console.log("the value for the response is: " + r.response_code);
+        this.router.navigate(['/content/p/' + this.cat_id + "/" + this.post_id]).finally();
       })
-      dialogRef.componentInstance.loading = false;
-      this.router.navigate(['#' + resp?.redirect ?? '']).finally();
+
     })
   }
 }

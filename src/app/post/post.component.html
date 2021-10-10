@@ -5,6 +5,7 @@
       <p class="card-text">{{post_content}}</p>
     </div>
   </div>
+  <button mat-raised-button [disabled]="!loggedInCheck()" routerLink="new/{{cat_id}}/{{post_id}}/0">New Comment</button>
 </div>
 <!--get comments-->
 <div>
@@ -13,5 +14,4 @@
 
     </div>
   </div>
-  <angular-editor [placeholder]="'enter text here'" [hidden]="!loggedInCheck()"></angular-editor>
 </div>

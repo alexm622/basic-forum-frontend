@@ -5,6 +5,7 @@ import {Categories, Posts} from "../../api/GetData";
 import {Category, Post} from "../../api/Objects";
 import {CategoryItemComponent} from "../category-item/category-item.component";
 import {PostItemComponent} from "../post-item/post-item.component";
+import {Login} from "../../api/Login";
 
 @Component({
   selector: 'app-posts',
@@ -14,7 +15,7 @@ import {PostItemComponent} from "../post-item/post-item.component";
 export class PostsComponent implements OnInit {
 
   private  page:number = 1;
-  private cat_id:number = 1;
+  public cat_id:number = 1;
 
   constructor(private route: ActivatedRoute, private router: Router,private resolver: ComponentFactoryResolver, private http:HttpClient) {}
 
@@ -64,6 +65,10 @@ export class PostsComponent implements OnInit {
     this.componentRef.instance.post_content = post.content;
     this.componentRef.instance.post_name = post.name;
     this.componentRef.instance.cat_id = this.cat_id;
+  }
+
+  loggedInCheck() {
+    return Login.loggedInCheck();
   }
 
 }

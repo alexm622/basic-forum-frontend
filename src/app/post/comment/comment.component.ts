@@ -11,6 +11,7 @@ import {Comments} from "../../api/GetData";
 import {UserComment} from "../../api/Objects";
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {Login} from "../../api/Login";
 
 @Component({
   selector: 'app-comment',
@@ -22,6 +23,7 @@ export class CommentComponent implements OnInit {
   @Input() cat_id:number = 0;
   @Input() post_id:number = 0;
   @Input() comment_id:number = 0;
+  @Input() parent_id:number = 0;
   @Input() username:string = "";
   @Input() content:string = "";
   @Input() countdown:number = 5;
@@ -39,6 +41,7 @@ export class CommentComponent implements OnInit {
 
   @ViewChild('appendHere',{read : ViewContainerRef}) target: ViewContainerRef | undefined;
   private componentRef: ComponentRef<any> | undefined;
+  collapsed: boolean = false;
 
   getComments(){
     let comments:Comments = new Comments(this.offset, this.cat_id, this.post_id,this.http, this.comment_id);
@@ -72,6 +75,10 @@ export class CommentComponent implements OnInit {
     this.componentRef.instance.username = comment.creator_id.toString();
     this.componentRef.instance.creation_date = comment.creation_date;
     this.componentRef.instance.countdown = this.countdown - 1;
+    this.componentRef.instance.parent_id = this.comment_id;
+  }
+  loggedInCheck() {
+    return Login.loggedInCheck();
   }
 
 }
