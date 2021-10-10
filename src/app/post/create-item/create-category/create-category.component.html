@@ -1,1 +1,19 @@
-<p>create-category works!</p>
+
+<div style="padding-right: 30%; padding-left: 30%">
+    <form class="text-center">
+      <div class="form-group row">
+        <div>
+          <div>
+            <label for="cat_name" class="form-label mt-4">Category Name</label>
+            <br>
+            <input name="cat_name" id="cat_name" type="text" placeholder="category name" class="form-control" [(ngModel)]="cat_name" (input)="cat_changed()">
+          </div>
+          <div>
+            <label class="form-label mt-4" for="cat_desc">Category Description</label>
+            <textarea name="cat_desc" type="textarea" rows="6" placeholder="category description" class="form-control" id="cat_desc"></textarea>
+          </div>
+        </div>
+      </div>
+    <button class="text-start" mat-raised-button (click)="submit()" disabled="!cat_good">Create!</button>
+    </form>
+</div>

@@ -9,6 +9,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {FormsModule} from "@angular/forms";
 import {AngularEditorModule} from "@kolkov/angular-editor";
+import {MatButtonModule} from "@angular/material/button";
 
 
 
@@ -20,14 +21,15 @@ import {AngularEditorModule} from "@kolkov/angular-editor";
     CreateCommentDialogComponent,
     CommentDialog
   ],
-  imports: [
-    CommonModule,
-    CreateRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDialogModule,
-    FormsModule,
-    AngularEditorModule,
-  ]
+    imports: [
+        CommonModule,
+        CreateRoutingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDialogModule,
+        FormsModule,
+        AngularEditorModule,
+        MatButtonModule,
+    ]
 })
 export class CreateItemModule { }

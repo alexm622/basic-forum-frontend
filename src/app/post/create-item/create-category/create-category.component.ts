@@ -9,7 +9,18 @@ export class CreateCategoryComponent implements OnInit {
 
   constructor() { }
 
+  public cat_name:string = "";
+  public cat_desc:string = "";
+  public cat_good:boolean = false;
+
   ngOnInit(): void {
   }
 
+  cat_changed() {
+    //something to see if category exists
+  }
+
+  submit() {
+
+  }
 }
