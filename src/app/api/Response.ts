@@ -13,3 +13,7 @@ export interface SignupResponse{
   uid?: number,
   token?: string,
 }
+export interface BasicResponse{
+  response_code:number;
+  redirect?: string;
+}

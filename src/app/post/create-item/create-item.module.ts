@@ -8,6 +8,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import {FormsModule} from "@angular/forms";
+import {AngularEditorModule} from "@kolkov/angular-editor";
 
 
 
@@ -26,6 +27,7 @@ import {FormsModule} from "@angular/forms";
     MatInputModule,
     MatDialogModule,
     FormsModule,
+    AngularEditorModule,
   ]
 })
 export class CreateItemModule { }

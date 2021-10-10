@@ -21,11 +21,11 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.page = parseInt(this.route.snapshot.paramMap.get("page") ?? "0");
     this.cat_id = parseInt(this.route.snapshot.paramMap.get("cat_id") ?? "0");
-    if(this.cat_id == 0){
+    if(this.cat_id <= 0){
       this.router.navigate(["/category/1/1"]).finally();
       return;
     }
-    if(this.page == 0){
+    if(this.page <= 0){
       this.router.navigate(["/category/" + this.cat_id.toString() + "/1"]).finally();
       return;
     }

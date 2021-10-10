@@ -21,7 +21,7 @@ export class LoginEntryComponent {
       width: '250px',
       data: this.credentials
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.beforeClosed().subscribe(result => {
       this.router.navigate(['../'], { relativeTo: this.route }).finally();
       console.log("dialog closed");
       if(((result?.uname ?? "none") == "none") || ((result?.pw ?? "none") == "none")){
@@ -55,9 +55,12 @@ export class LoginDialog{
   int_data:LoginRequest;
   constructor(public dialogRef: MatDialogRef<LoginDialog>,
               @Inject(MAT_DIALOG_DATA) public data: LoginRequest) {this.int_data = data;}
+  public loading = false;
+  public onSubmit: any;
 
-  onNoClick(){
+  onNoClick(event:any){
     this.dialogRef.close();
   }
+
 }
 
