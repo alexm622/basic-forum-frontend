@@ -10,7 +10,8 @@ import {PostsComponent} from "./posts/posts.component";
 const routes: Routes = [
   { path: 'c/:page', component: CategoriesComponent},
   { path: 'c/:cat_id/:page', component:PostsComponent},
-  { path: 'p/:cat_id/:post_id', component: PostComponent}
+  { path: 'p/:cat_id/:post_id', component: PostComponent},
+  { path: 'new', loadChildren: () => import(/*webpackChunkName: "create" */'./create-item/create-item.module').then(m => m.CreateItemModule)}
 ];
 
 @NgModule({
