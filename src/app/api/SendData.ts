@@ -1,5 +1,5 @@
-import {BasicResponse} from "./Response";
-import {Post} from "./Requests";
+import {BasicResponse, Exists} from "./Response";
+import {Get, Post} from "./Requests";
 import {HttpClient} from "@angular/common/http";
 
 export interface NewCategory{
@@ -8,6 +8,24 @@ export interface NewCategory{
   user:number,
   user_token:string
 }
+export class NewCat{
+  constructor(public http:HttpClient) {
+
+
+  }
+
+  private cat_check:string = "http://10.16.40.203:8080/checkcat"
+  public async check_cat(cat:string):Promise<Exists>{
+
+    let args:string = "&cat=" + ((cat.replace(" ","") == "")? "none" : cat);
+    if(args == "&cat=none"){
+      return {exists:true};
+    }
+    let get_req:Get<Exists> = new Get<Exists>(this.cat_check, args, this.http)
+    return await get_req.make_request().toPromise();
+  }
+}
+
 export class SendCat{
   constructor(public newCategory:NewCategory, public http:HttpClient) {
   }

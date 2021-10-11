@@ -23,11 +23,11 @@ export class PostsComponent implements OnInit {
     this.page = parseInt(this.route.snapshot.paramMap.get("page") ?? "0");
     this.cat_id = parseInt(this.route.snapshot.paramMap.get("cat_id") ?? "0");
     if(this.cat_id <= 0){
-      this.router.navigate(["/category/1/1"]).finally();
+      this.router.navigate(["/content/c/1/1"]).finally();
       return;
     }
     if(this.page <= 0){
-      this.router.navigate(["/category/" + this.cat_id.toString() + "/1"]).finally();
+      this.router.navigate(["/content/c/" + this.cat_id.toString() + "/1"]).finally();
       return;
     }
     this.getPosts();
@@ -43,8 +43,10 @@ export class PostsComponent implements OnInit {
     posts.getPosts().then( r=>{
       post_array = r;
       if(post_array == undefined){
-        this.page -= 1;
-        this.router.navigate(["/category/" + this.cat_id.toString() + "/" + this.page.toString()]).finally();
+        if(this.page > 1){
+          this.page -= 1;
+        }
+        this.router.navigate(["/content/c/" + this.cat_id.toString() + "/" + this.page.toString()]).finally();
         return;
       }
       for(let post of post_array){

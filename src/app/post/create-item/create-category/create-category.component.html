@@ -7,6 +7,7 @@
             <label for="cat_name" class="form-label mt-4">Category Name</label>
             <br>
             <input name="cat_name" id="cat_name" type="text" placeholder="category name" class="form-control" [(ngModel)]="cat_name" (input)="cat_changed()">
+            <div class="invalid-feedback">this category name is taken</div>
           </div>
           <div>
             <label class="form-label mt-4" for="cat_desc">Category Description</label>
@@ -14,6 +15,6 @@
           </div>
         </div>
       </div>
-    <button class="text-start" mat-raised-button (click)="submit()" disabled="!cat_good">Create!</button>
+    <button class="text-start" mat-raised-button (click)="submit()" [disabled]="cat_good">Create!</button>
     </form>
 </div>
