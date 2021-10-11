@@ -38,7 +38,7 @@ export class PostsComponent implements OnInit {
   private componentRef: ComponentRef<any> | undefined;
 
   getPosts(){
-    let posts:Posts = new Posts(this.cat_id, this.page,this.http);
+    let posts:Posts = new Posts(this.page, this.cat_id, this.http);
     let post_array:Array<Post> | undefined;
     posts.getPosts().then( r=>{
       post_array = r;

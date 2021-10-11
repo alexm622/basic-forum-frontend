@@ -1,1 +1,19 @@
-<p>create-post works!</p>
+
+<div style="padding-right: 30%; padding-left: 30%">
+  <form class="text-center">
+    <div class="form-group row">
+      <div>
+        <div>
+          <label for="cat_name" class="form-label mt-4">Post Title</label>
+          <br>
+          <input name="cat_name" id="cat_name" type="text" placeholder="category name" class="form-control" [(ngModel)]="post_title">
+        </div>
+        <div>
+          <label class="form-label mt-4" for="post_content">Post Content</label>
+          <angular-editor name="cat_desc" type="textarea" [(ngModel)]="cat_desc" id="post_content"> </angular-editor>
+        </div>
+      </div>
+    </div>
+    <button class="text-start" mat-raised-button (click)="submit()" [disabled]="post_good">Create!</button>
+  </form>
+</div>

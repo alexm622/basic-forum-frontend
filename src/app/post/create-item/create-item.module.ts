@@ -19,7 +19,8 @@ import {MatButtonModule} from "@angular/material/button";
     CreatePostComponent,
     CreateCategoryComponent,
     CreateCommentDialogComponent,
-    CommentDialog
+    CommentDialog,
+
   ],
     imports: [
         CommonModule,
