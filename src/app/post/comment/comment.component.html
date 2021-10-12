@@ -2,7 +2,7 @@
   <div class="card bg-light mb-3">
     <div class="card-header">{{username}} <button mat-raised-button class="align-content-end" [disabled]="!loggedInCheck()" routerLink="new/{{cat_id}}/{{post_id}}/{{comment_id}}">New Comment</button></div>
     <div class="card-body" [hidden]="collapsed">
-      <p class="card-text">{{content}}</p>
+      <div [innerHTML]="content"></div>
     </div>
     <div style="padding: 20px;" [hidden]="collapsed">
       <div #appendHere>

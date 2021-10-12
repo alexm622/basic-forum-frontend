@@ -2,7 +2,7 @@
   <div class="card bg-light mb-3" >
     <div class="card-header">{{post_name}}</div>
     <div class="card-body">
-      <p class="card-text">{{post_content}}</p>
+      <p class="card-text" [innerHTML]="post_content"></p>
     </div>
   </div>
   <button mat-raised-button [disabled]="!loggedInCheck()" routerLink="new/{{cat_id}}/{{post_id}}/0">New Comment</button>
